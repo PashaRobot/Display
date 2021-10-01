@@ -13,6 +13,24 @@ uint8_t FE19_08B[] = "FE19-08B";
 uint8_t ClearDisplay[] = "Clear Display";
 
 HD44780 FirstDisplay;
+void numbers()
+{
+	FirstDisplay.Set_X_Y(16, 2);
+	FirstDisplay.Send_Data('5');
+	_delay_ms(1000);
+	FirstDisplay.Set_X_Y(16, 2);
+	FirstDisplay.Send_Data('4');
+	_delay_ms(1000);
+	FirstDisplay.Set_X_Y(16, 2);
+	FirstDisplay.Send_Data('3');
+	_delay_ms(1000);
+	FirstDisplay.Set_X_Y(16, 2);
+	FirstDisplay.Send_Data('2');
+	_delay_ms(1000);
+	FirstDisplay.Set_X_Y(16, 2);
+	FirstDisplay.Send_Data('1');
+	_delay_ms(1000);
+}
 
 int main(void)
 {	
@@ -22,7 +40,7 @@ int main(void)
 		FirstDisplay.Send_String(PavelBezdelev);
 		FirstDisplay.Set_X_Y(5, 2);
 		FirstDisplay.Send_String(FE19_08B);
-		_delay_ms(5000);
+		numbers();
 		FirstDisplay.Clear_Display();
 		FirstDisplay.Set_X_Y(2, 1);
 		FirstDisplay.Send_String(ClearDisplay);
