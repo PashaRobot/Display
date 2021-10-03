@@ -89,7 +89,7 @@ void HD44780::_PORTA_OUT_(uint8_t byte)
 	}
 }
 
-void HD44780::Send_String(uint8_t* str)
+void HD44780::Send_String(const char* str)
 {
 	uint8_t i = 0;
 	while (*(str+i))    // Цикл действует пока не дойдет до 0, который стоит в конце строки

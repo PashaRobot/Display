@@ -236,7 +236,7 @@ END GROUP
                 0x00000000                __vectors
  *(.vectors)
  *(.progmem.gcc*)
- .progmem.gcc_sw_table._ZN7HD4478011Send_StringEPh
+ .progmem.gcc_sw_table._ZN7HD4478011Send_StringEPKc
                 0x000001fc       0xb0 HD44780.o
                 0x000002ac                . = ALIGN (0x2)
                 0x000002ac                __trampolines_start = .
@@ -435,9 +435,9 @@ END GROUP
  .text._ZN7HD447809Send_DataEh
                 0x0000041a       0x36 HD44780.o
                 0x0000041a                _ZN7HD447809Send_DataEh
- .text._ZN7HD4478011Send_StringEPh
+ .text._ZN7HD4478011Send_StringEPKc
                 0x00000450      0x2e2 HD44780.o
-                0x00000450                _ZN7HD4478011Send_StringEPh
+                0x00000450                _ZN7HD4478011Send_StringEPKc
  .text._ZN7HD447807Set_X_YEhh
                 0x00000732       0x3c HD44780.o
                 0x00000732                _ZN7HD447807Set_X_YEhh
@@ -448,7 +448,7 @@ END GROUP
                 0x00000782       0x14 main.o
  .text.main     0x00000796       0x90 main.o
                 0x00000796                main
- .text._GLOBAL__sub_I_PavelBezdelev
+ .text._GLOBAL__sub_I_FirstDisplay
                 0x00000826        0xe main.o
  .text.libgcc   0x00000834        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega2\libgcc.a(_tablejump2.o)
                 0x00000834                __tablejump2__
@@ -483,17 +483,11 @@ END GROUP
                 0x00802000                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
- .data.Clear    0x00802000       0x10 main.o
-                0x00802000                Clear
- .data.FE19_08B
-                0x00802010        0x9 main.o
-                0x00802010                FE19_08B
- .data.PavelBezdelev
-                0x00802019        0xf main.o
-                0x00802019                PavelBezdelev
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
+ .rodata.str1.1
+                0x00802000       0x28 main.o
  *(.gnu.linkonce.r*)
                 0x00802028                . = ALIGN (0x2)
                 0x00802028                _edata = .
@@ -591,17 +585,17 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x3ef2
+.debug_info     0x00000000     0x3eb0
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000     0x284f C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.2.141/gcc/dev/atxmega16a4u/avrxmega2/crtatxmega16a4u.o
- .debug_info    0x0000284f     0x11cf HD44780.o
- .debug_info    0x00003a1e      0x4d4 main.o
+ .debug_info    0x0000284f     0x11e1 HD44780.o
+ .debug_info    0x00003a30      0x480 main.o
 
-.debug_abbrev   0x00000000     0x29e2
+.debug_abbrev   0x00000000     0x29d7
  *(.debug_abbrev)
  .debug_abbrev  0x00000000     0x262c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.2.141/gcc/dev/atxmega16a4u/avrxmega2/crtatxmega16a4u.o
  .debug_abbrev  0x0000262c      0x211 HD44780.o
- .debug_abbrev  0x0000283d      0x1a5 main.o
+ .debug_abbrev  0x0000283d      0x19a main.o
 
 .debug_line     0x00000000      0xa5f
  *(.debug_line .debug_line.* .debug_line_end)
@@ -614,13 +608,13 @@ END GROUP
  .debug_frame   0x00000000       0xc4 HD44780.o
  .debug_frame   0x000000c4       0x44 main.o
 
-.debug_str      0x00000000     0x1e25
+.debug_str      0x00000000     0x1e09
  *(.debug_str)
  .debug_str     0x00000000     0x1aa8 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.2.141/gcc/dev/atxmega16a4u/avrxmega2/crtatxmega16a4u.o
- .debug_str     0x00001aa8      0x2ed HD44780.o
-                                0x328 (size before relaxing)
- .debug_str     0x00001d95       0x90 main.o
-                                0x38c (size before relaxing)
+ .debug_str     0x00001aa8      0x2ee HD44780.o
+                                0x32e (size before relaxing)
+ .debug_str     0x00001d96       0x73 main.o
+                                0x374 (size before relaxing)
 
 .debug_loc      0x00000000      0x994
  *(.debug_loc)

@@ -66,7 +66,7 @@ public:
 	void	Send_Cmd(uint8_t);
 	void	String(uint8_t*);
 	void    _PORTA_OUT_(uint8_t);
-	void    Send_String(uint8_t*);
+	void    Send_String(const char* str);
 	void    Set_X_Y(uint8_t x, uint8_t y);
 	void    Clear_Display();
 	

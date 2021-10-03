@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000080  00000000  00000000  00000970  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00003ef2  00000000  00000000  000009f0  2**0
+  6 .debug_info   00003eb0  00000000  00000000  000009f0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000029e2  00000000  00000000  000048e2  2**0
+  7 .debug_abbrev 000029d7  00000000  00000000  000048a0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000a5f  00000000  00000000  000072c4  2**0
+  8 .debug_line   00000a5f  00000000  00000000  00007277  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000108  00000000  00000000  00007d24  2**2
+  9 .debug_frame  00000108  00000000  00000000  00007cd8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00001e25  00000000  00000000  00007e2c  2**0
+ 10 .debug_str    00001e09  00000000  00000000  00007de0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000994  00000000  00000000  00009c51  2**0
+ 11 .debug_loc    00000994  00000000  00000000  00009be9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000078  00000000  00000000  0000a5e5  2**0
+ 12 .debug_ranges 00000078  00000000  00000000  0000a57d  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -601,12 +601,12 @@ void HD44780::Send_Data(uint8_t byte)
  44c:	cf 91       	pop	r28
  44e:	08 95       	ret
 
-00000450 <_ZN7HD4478011Send_StringEPh>:
+00000450 <_ZN7HD4478011Send_StringEPKc>:
 		j = j >> 1;
 	}
 }
 
-void HD44780::Send_String(uint8_t* str)
+void HD44780::Send_String(const char* str)
 {
  450:	ff 92       	push	r15
  452:	0f 93       	push	r16
@@ -623,8 +623,8 @@ void HD44780::Send_String(uint8_t* str)
  464:	f1 1d       	adc	r31, r1
  466:	60 81       	ld	r22, Z
  468:	66 23       	and	r22, r22
- 46a:	09 f4       	brne	.+2      	; 0x46e <_ZN7HD4478011Send_StringEPh+0x1e>
- 46c:	5c c1       	rjmp	.+696    	; 0x726 <_ZN7HD4478011Send_StringEPh+0x2d6>
+ 46a:	09 f4       	brne	.+2      	; 0x46e <_ZN7HD4478011Send_StringEPKc+0x1e>
+ 46c:	5c c1       	rjmp	.+696    	; 0x726 <_ZN7HD4478011Send_StringEPKc+0x2d6>
 	{
 		switch(*(str+i))
  46e:	86 2f       	mov	r24, r22
@@ -634,8 +634,8 @@ void HD44780::Send_String(uint8_t* str)
  476:	f1 09       	sbc	r31, r1
  478:	e8 35       	cpi	r30, 0x58	; 88
  47a:	f1 05       	cpc	r31, r1
- 47c:	08 f0       	brcs	.+2      	; 0x480 <_ZN7HD4478011Send_StringEPh+0x30>
- 47e:	4e c1       	rjmp	.+668    	; 0x71c <_ZN7HD4478011Send_StringEPh+0x2cc>
+ 47c:	08 f0       	brcs	.+2      	; 0x480 <_ZN7HD4478011Send_StringEPKc+0x30>
+ 47e:	4e c1       	rjmp	.+668    	; 0x71c <_ZN7HD4478011Send_StringEPKc+0x2cc>
  480:	e2 50       	subi	r30, 0x02	; 2
  482:	ff 4f       	sbci	r31, 0xFF	; 255
  484:	0c 94 1a 04 	jmp	0x834	; 0x834 <__tablejump2__>
@@ -644,332 +644,332 @@ void HD44780::Send_String(uint8_t* str)
  488:	61 e4       	ldi	r22, 0x41	; 65
  48a:	c8 01       	movw	r24, r16
  48c:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 490:	48 c1       	rjmp	.+656    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 490:	48 c1       	rjmp	.+656    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Б': Send_Data(0xA0); break;
  492:	60 ea       	ldi	r22, 0xA0	; 160
  494:	c8 01       	movw	r24, r16
  496:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 49a:	43 c1       	rjmp	.+646    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 49a:	43 c1       	rjmp	.+646    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'В': Send_Data('B'); break;
  49c:	62 e4       	ldi	r22, 0x42	; 66
  49e:	c8 01       	movw	r24, r16
  4a0:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 4a4:	3e c1       	rjmp	.+636    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 4a4:	3e c1       	rjmp	.+636    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Г': Send_Data(0xA1); break;
  4a6:	61 ea       	ldi	r22, 0xA1	; 161
  4a8:	c8 01       	movw	r24, r16
  4aa:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 4ae:	39 c1       	rjmp	.+626    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 4ae:	39 c1       	rjmp	.+626    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Д': Send_Data(0xE0); break;
  4b0:	60 ee       	ldi	r22, 0xE0	; 224
  4b2:	c8 01       	movw	r24, r16
  4b4:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 4b8:	34 c1       	rjmp	.+616    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 4b8:	34 c1       	rjmp	.+616    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Е': Send_Data('E'); break;
  4ba:	65 e4       	ldi	r22, 0x45	; 69
  4bc:	c8 01       	movw	r24, r16
  4be:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 4c2:	2f c1       	rjmp	.+606    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 4c2:	2f c1       	rjmp	.+606    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Ё': Send_Data(0xA2); break;
  4c4:	62 ea       	ldi	r22, 0xA2	; 162
  4c6:	c8 01       	movw	r24, r16
  4c8:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 4cc:	2a c1       	rjmp	.+596    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 4cc:	2a c1       	rjmp	.+596    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Ж': Send_Data(0xA3); break;
  4ce:	63 ea       	ldi	r22, 0xA3	; 163
  4d0:	c8 01       	movw	r24, r16
  4d2:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 4d6:	25 c1       	rjmp	.+586    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 4d6:	25 c1       	rjmp	.+586    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'З': Send_Data(0xA4); break;
  4d8:	64 ea       	ldi	r22, 0xA4	; 164
  4da:	c8 01       	movw	r24, r16
  4dc:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 4e0:	20 c1       	rjmp	.+576    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 4e0:	20 c1       	rjmp	.+576    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'И': Send_Data(0xA5); break;	
  4e2:	65 ea       	ldi	r22, 0xA5	; 165
  4e4:	c8 01       	movw	r24, r16
  4e6:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 4ea:	1b c1       	rjmp	.+566    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 4ea:	1b c1       	rjmp	.+566    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Й': Send_Data(0xA6); break;
  4ec:	66 ea       	ldi	r22, 0xA6	; 166
  4ee:	c8 01       	movw	r24, r16
  4f0:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 4f4:	16 c1       	rjmp	.+556    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 4f4:	16 c1       	rjmp	.+556    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'К': Send_Data('K'); break;
  4f6:	6b e4       	ldi	r22, 0x4B	; 75
  4f8:	c8 01       	movw	r24, r16
  4fa:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 4fe:	11 c1       	rjmp	.+546    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 4fe:	11 c1       	rjmp	.+546    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Л': Send_Data(0xA7); break;
  500:	67 ea       	ldi	r22, 0xA7	; 167
  502:	c8 01       	movw	r24, r16
  504:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 508:	0c c1       	rjmp	.+536    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 508:	0c c1       	rjmp	.+536    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'М': Send_Data('M'); break;
  50a:	6d e4       	ldi	r22, 0x4D	; 77
  50c:	c8 01       	movw	r24, r16
  50e:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 512:	07 c1       	rjmp	.+526    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 512:	07 c1       	rjmp	.+526    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Н': Send_Data('H'); break;
  514:	68 e4       	ldi	r22, 0x48	; 72
  516:	c8 01       	movw	r24, r16
  518:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 51c:	02 c1       	rjmp	.+516    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 51c:	02 c1       	rjmp	.+516    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'О': Send_Data('O'); break;
  51e:	6f e4       	ldi	r22, 0x4F	; 79
  520:	c8 01       	movw	r24, r16
  522:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 526:	fd c0       	rjmp	.+506    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 526:	fd c0       	rjmp	.+506    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'П': Send_Data(0xA8); break;
  528:	68 ea       	ldi	r22, 0xA8	; 168
  52a:	c8 01       	movw	r24, r16
  52c:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 530:	f8 c0       	rjmp	.+496    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 530:	f8 c0       	rjmp	.+496    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Р': Send_Data('P'); break;
  532:	60 e5       	ldi	r22, 0x50	; 80
  534:	c8 01       	movw	r24, r16
  536:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 53a:	f3 c0       	rjmp	.+486    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 53a:	f3 c0       	rjmp	.+486    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'С': Send_Data('C'); break;
  53c:	63 e4       	ldi	r22, 0x43	; 67
  53e:	c8 01       	movw	r24, r16
  540:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 544:	ee c0       	rjmp	.+476    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 544:	ee c0       	rjmp	.+476    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Т': Send_Data('T'); break;
  546:	64 e5       	ldi	r22, 0x54	; 84
  548:	c8 01       	movw	r24, r16
  54a:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 54e:	e9 c0       	rjmp	.+466    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 54e:	e9 c0       	rjmp	.+466    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'У': Send_Data(0xA9); break;
  550:	69 ea       	ldi	r22, 0xA9	; 169
  552:	c8 01       	movw	r24, r16
  554:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 558:	e4 c0       	rjmp	.+456    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 558:	e4 c0       	rjmp	.+456    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Ф': Send_Data(0xAA); break;
  55a:	6a ea       	ldi	r22, 0xAA	; 170
  55c:	c8 01       	movw	r24, r16
  55e:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 562:	df c0       	rjmp	.+446    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 562:	df c0       	rjmp	.+446    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Х': Send_Data('X'); break;
  564:	68 e5       	ldi	r22, 0x58	; 88
  566:	c8 01       	movw	r24, r16
  568:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 56c:	da c0       	rjmp	.+436    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 56c:	da c0       	rjmp	.+436    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Ц': Send_Data(0xE1); break;
  56e:	61 ee       	ldi	r22, 0xE1	; 225
  570:	c8 01       	movw	r24, r16
  572:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 576:	d5 c0       	rjmp	.+426    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 576:	d5 c0       	rjmp	.+426    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Ч': Send_Data(0xAB); break;
  578:	6b ea       	ldi	r22, 0xAB	; 171
  57a:	c8 01       	movw	r24, r16
  57c:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 580:	d0 c0       	rjmp	.+416    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 580:	d0 c0       	rjmp	.+416    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Ш': Send_Data(0xAC); break;
  582:	6c ea       	ldi	r22, 0xAC	; 172
  584:	c8 01       	movw	r24, r16
  586:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 58a:	cb c0       	rjmp	.+406    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 58a:	cb c0       	rjmp	.+406    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Щ': Send_Data(0xE2); break;
  58c:	62 ee       	ldi	r22, 0xE2	; 226
  58e:	c8 01       	movw	r24, r16
  590:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 594:	c6 c0       	rjmp	.+396    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 594:	c6 c0       	rjmp	.+396    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Ъ': Send_Data(0xAD); break;
  596:	6d ea       	ldi	r22, 0xAD	; 173
  598:	c8 01       	movw	r24, r16
  59a:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 59e:	c1 c0       	rjmp	.+386    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 59e:	c1 c0       	rjmp	.+386    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Ы': Send_Data(0xAE); break;
  5a0:	6e ea       	ldi	r22, 0xAE	; 174
  5a2:	c8 01       	movw	r24, r16
  5a4:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 5a8:	bc c0       	rjmp	.+376    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 5a8:	bc c0       	rjmp	.+376    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Ь': Send_Data(0x62); break;
  5aa:	62 e6       	ldi	r22, 0x62	; 98
  5ac:	c8 01       	movw	r24, r16
  5ae:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 5b2:	b7 c0       	rjmp	.+366    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 5b2:	b7 c0       	rjmp	.+366    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Э': Send_Data(0xAF); break;
  5b4:	6f ea       	ldi	r22, 0xAF	; 175
  5b6:	c8 01       	movw	r24, r16
  5b8:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 5bc:	b2 c0       	rjmp	.+356    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 5bc:	b2 c0       	rjmp	.+356    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Ю': Send_Data(0xB0); break;
  5be:	60 eb       	ldi	r22, 0xB0	; 176
  5c0:	c8 01       	movw	r24, r16
  5c2:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 5c6:	ad c0       	rjmp	.+346    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 5c6:	ad c0       	rjmp	.+346    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'Я': Send_Data(0xB1); break;
  5c8:	61 eb       	ldi	r22, 0xB1	; 177
  5ca:	c8 01       	movw	r24, r16
  5cc:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 5d0:	a8 c0       	rjmp	.+336    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 5d0:	a8 c0       	rjmp	.+336    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'а': Send_Data('a'); break;
  5d2:	61 e6       	ldi	r22, 0x61	; 97
  5d4:	c8 01       	movw	r24, r16
  5d6:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 5da:	a3 c0       	rjmp	.+326    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 5da:	a3 c0       	rjmp	.+326    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'б': Send_Data(0xB2); break;
  5dc:	62 eb       	ldi	r22, 0xB2	; 178
  5de:	c8 01       	movw	r24, r16
  5e0:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 5e4:	9e c0       	rjmp	.+316    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 5e4:	9e c0       	rjmp	.+316    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'в': Send_Data(0xB3); break;
  5e6:	63 eb       	ldi	r22, 0xB3	; 179
  5e8:	c8 01       	movw	r24, r16
  5ea:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 5ee:	99 c0       	rjmp	.+306    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 5ee:	99 c0       	rjmp	.+306    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'г': Send_Data(0xB4); break;
  5f0:	64 eb       	ldi	r22, 0xB4	; 180
  5f2:	c8 01       	movw	r24, r16
  5f4:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 5f8:	94 c0       	rjmp	.+296    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 5f8:	94 c0       	rjmp	.+296    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'д': Send_Data(0xE3); break;
  5fa:	63 ee       	ldi	r22, 0xE3	; 227
  5fc:	c8 01       	movw	r24, r16
  5fe:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 602:	8f c0       	rjmp	.+286    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 602:	8f c0       	rjmp	.+286    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'е': Send_Data('e'); break;
  604:	65 e6       	ldi	r22, 0x65	; 101
  606:	c8 01       	movw	r24, r16
  608:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 60c:	8a c0       	rjmp	.+276    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 60c:	8a c0       	rjmp	.+276    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'ё': Send_Data(0xB5); break;
  60e:	65 eb       	ldi	r22, 0xB5	; 181
  610:	c8 01       	movw	r24, r16
  612:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 616:	85 c0       	rjmp	.+266    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 616:	85 c0       	rjmp	.+266    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'ж': Send_Data(0xB6); break;
  618:	66 eb       	ldi	r22, 0xB6	; 182
  61a:	c8 01       	movw	r24, r16
  61c:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 620:	80 c0       	rjmp	.+256    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 620:	80 c0       	rjmp	.+256    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'з': Send_Data(0xB7); break;
  622:	67 eb       	ldi	r22, 0xB7	; 183
  624:	c8 01       	movw	r24, r16
  626:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 62a:	7b c0       	rjmp	.+246    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 62a:	7b c0       	rjmp	.+246    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'и': Send_Data(0xB8); break;
  62c:	68 eb       	ldi	r22, 0xB8	; 184
  62e:	c8 01       	movw	r24, r16
  630:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 634:	76 c0       	rjmp	.+236    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 634:	76 c0       	rjmp	.+236    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'й': Send_Data(0xB9); break;
  636:	69 eb       	ldi	r22, 0xB9	; 185
  638:	c8 01       	movw	r24, r16
  63a:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 63e:	71 c0       	rjmp	.+226    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 63e:	71 c0       	rjmp	.+226    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'к': Send_Data(0xBA); break;
  640:	6a eb       	ldi	r22, 0xBA	; 186
  642:	c8 01       	movw	r24, r16
  644:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 648:	6c c0       	rjmp	.+216    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 648:	6c c0       	rjmp	.+216    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'л': Send_Data(0xBB); break;
  64a:	6b eb       	ldi	r22, 0xBB	; 187
  64c:	c8 01       	movw	r24, r16
  64e:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 652:	67 c0       	rjmp	.+206    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 652:	67 c0       	rjmp	.+206    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'м': Send_Data(0xBC); break;
  654:	6c eb       	ldi	r22, 0xBC	; 188
  656:	c8 01       	movw	r24, r16
  658:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 65c:	62 c0       	rjmp	.+196    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 65c:	62 c0       	rjmp	.+196    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'н': Send_Data(0xBD); break;
  65e:	6d eb       	ldi	r22, 0xBD	; 189
  660:	c8 01       	movw	r24, r16
  662:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 666:	5d c0       	rjmp	.+186    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 666:	5d c0       	rjmp	.+186    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'о': Send_Data('o'); break;
  668:	6f e6       	ldi	r22, 0x6F	; 111
  66a:	c8 01       	movw	r24, r16
  66c:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 670:	58 c0       	rjmp	.+176    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 670:	58 c0       	rjmp	.+176    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'п': Send_Data(0xBE); break;
  672:	6e eb       	ldi	r22, 0xBE	; 190
  674:	c8 01       	movw	r24, r16
  676:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 67a:	53 c0       	rjmp	.+166    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 67a:	53 c0       	rjmp	.+166    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'р': Send_Data('p'); break;
  67c:	60 e7       	ldi	r22, 0x70	; 112
  67e:	c8 01       	movw	r24, r16
  680:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 684:	4e c0       	rjmp	.+156    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 684:	4e c0       	rjmp	.+156    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'с': Send_Data('c'); break;
  686:	63 e6       	ldi	r22, 0x63	; 99
  688:	c8 01       	movw	r24, r16
  68a:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 68e:	49 c0       	rjmp	.+146    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 68e:	49 c0       	rjmp	.+146    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'т': Send_Data(0xBF); break;
  690:	6f eb       	ldi	r22, 0xBF	; 191
  692:	c8 01       	movw	r24, r16
  694:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 698:	44 c0       	rjmp	.+136    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 698:	44 c0       	rjmp	.+136    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'у': Send_Data('y'); break;
  69a:	69 e7       	ldi	r22, 0x79	; 121
  69c:	c8 01       	movw	r24, r16
  69e:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 6a2:	3f c0       	rjmp	.+126    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 6a2:	3f c0       	rjmp	.+126    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'ф': Send_Data(0xE4); break;
  6a4:	64 ee       	ldi	r22, 0xE4	; 228
  6a6:	c8 01       	movw	r24, r16
  6a8:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 6ac:	3a c0       	rjmp	.+116    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 6ac:	3a c0       	rjmp	.+116    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'х': Send_Data('x'); break;
  6ae:	68 e7       	ldi	r22, 0x78	; 120
  6b0:	c8 01       	movw	r24, r16
  6b2:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 6b6:	35 c0       	rjmp	.+106    	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 6b6:	35 c0       	rjmp	.+106    	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'ц': Send_Data(0xE5); break;
  6b8:	65 ee       	ldi	r22, 0xE5	; 229
  6ba:	c8 01       	movw	r24, r16
  6bc:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 6c0:	30 c0       	rjmp	.+96     	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 6c0:	30 c0       	rjmp	.+96     	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'ч': Send_Data(0xC0); break;
  6c2:	60 ec       	ldi	r22, 0xC0	; 192
  6c4:	c8 01       	movw	r24, r16
  6c6:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 6ca:	2b c0       	rjmp	.+86     	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 6ca:	2b c0       	rjmp	.+86     	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'ш': Send_Data(0xC1); break;
  6cc:	61 ec       	ldi	r22, 0xC1	; 193
  6ce:	c8 01       	movw	r24, r16
  6d0:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 6d4:	26 c0       	rjmp	.+76     	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 6d4:	26 c0       	rjmp	.+76     	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'щ': Send_Data(0xE6); break;
  6d6:	66 ee       	ldi	r22, 0xE6	; 230
  6d8:	c8 01       	movw	r24, r16
  6da:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 6de:	21 c0       	rjmp	.+66     	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 6de:	21 c0       	rjmp	.+66     	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'ъ': Send_Data(0xC2); break;
  6e0:	62 ec       	ldi	r22, 0xC2	; 194
  6e2:	c8 01       	movw	r24, r16
  6e4:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 6e8:	1c c0       	rjmp	.+56     	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 6e8:	1c c0       	rjmp	.+56     	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'ы': Send_Data(0xC3); break;
  6ea:	63 ec       	ldi	r22, 0xC3	; 195
  6ec:	c8 01       	movw	r24, r16
  6ee:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 6f2:	17 c0       	rjmp	.+46     	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 6f2:	17 c0       	rjmp	.+46     	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'ь': Send_Data(0xC4); break;
  6f4:	64 ec       	ldi	r22, 0xC4	; 196
  6f6:	c8 01       	movw	r24, r16
  6f8:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 6fc:	12 c0       	rjmp	.+36     	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 6fc:	12 c0       	rjmp	.+36     	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'э': Send_Data(0xC5); break;
  6fe:	65 ec       	ldi	r22, 0xC5	; 197
  700:	c8 01       	movw	r24, r16
  702:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 706:	0d c0       	rjmp	.+26     	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 706:	0d c0       	rjmp	.+26     	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'ю': Send_Data(0xC6); break;
  708:	66 ec       	ldi	r22, 0xC6	; 198
  70a:	c8 01       	movw	r24, r16
  70c:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 710:	08 c0       	rjmp	.+16     	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 710:	08 c0       	rjmp	.+16     	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 			case 'я': Send_Data(0xC7); break;
  712:	67 ec       	ldi	r22, 0xC7	; 199
  714:	c8 01       	movw	r24, r16
  716:	0e 94 0d 02 	call	0x41a	; 0x41a <_ZN7HD447809Send_DataEh>
- 71a:	03 c0       	rjmp	.+6      	; 0x722 <_ZN7HD4478011Send_StringEPh+0x2d2>
+ 71a:	03 c0       	rjmp	.+6      	; 0x722 <_ZN7HD4478011Send_StringEPKc+0x2d2>
 				
 			default: Send_Data(*(str+i));
  71c:	c8 01       	movw	r24, r16
@@ -979,11 +979,11 @@ void HD44780::Send_String(uint8_t* str)
  722:	f3 94       	inc	r15
 }
 
-void HD44780::Send_String(uint8_t* str)
+void HD44780::Send_String(const char* str)
 {
 	uint8_t i = 0;
 	while (*(str+i))    // Цикл действует пока не дойдет до 0, который стоит в конце строки
- 724:	9d ce       	rjmp	.-710    	; 0x460 <_ZN7HD4478011Send_StringEPh+0x10>
+ 724:	9d ce       	rjmp	.-710    	; 0x460 <_ZN7HD4478011Send_StringEPKc+0x10>
 				
 			default: Send_Data(*(str+i));
 		}
@@ -1063,7 +1063,7 @@ void HD44780::Clear_Display()
  780:	08 95       	ret
 
 00000782 <_Z41__static_initialization_and_destruction_0ii>:
-		FirstDisplay.Send_String(Clear);
+		FirstDisplay.Send_String("Очистка дисплея");
 		_delay_ms(2000);
 		FirstDisplay.Clear_Display();
 		_delay_ms(2000);
@@ -1073,12 +1073,12 @@ void HD44780::Clear_Display()
  786:	6f 3f       	cpi	r22, 0xFF	; 255
  788:	7f 4f       	sbci	r23, 0xFF	; 255
  78a:	21 f4       	brne	.+8      	; 0x794 <_Z41__static_initialization_and_destruction_0ii+0x12>
+ */ 
 
-uint8_t PavelBezdelev[] = "Павел Безделев";
-uint8_t FE19_08B[] = "ФЭ19-08Б";
-uint8_t Clear[] = "Очистка дисплея";
+#include <avr/io.h>
+#include "HD44780.h"
 
-HD44780 FirstDisplay;
+HD44780 FirstDisplay; 
  78c:	88 e2       	ldi	r24, 0x28	; 40
  78e:	90 e2       	ldi	r25, 0x20	; 32
  790:	0e 94 ae 01 	call	0x35c	; 0x35c <_ZN7HD44780C1Ev>
@@ -1096,24 +1096,24 @@ int main(void)
  79a:	88 e2       	ldi	r24, 0x28	; 40
  79c:	90 e2       	ldi	r25, 0x20	; 32
  79e:	0e 94 99 03 	call	0x732	; 0x732 <_ZN7HD447807Set_X_YEhh>
-		FirstDisplay.Send_String(PavelBezdelev);
- 7a2:	69 e1       	ldi	r22, 0x19	; 25
+		FirstDisplay.Send_String("Павел Безделев");
+ 7a2:	60 e0       	ldi	r22, 0x00	; 0
  7a4:	70 e2       	ldi	r23, 0x20	; 32
  7a6:	88 e2       	ldi	r24, 0x28	; 40
  7a8:	90 e2       	ldi	r25, 0x20	; 32
- 7aa:	0e 94 28 02 	call	0x450	; 0x450 <_ZN7HD4478011Send_StringEPh>
+ 7aa:	0e 94 28 02 	call	0x450	; 0x450 <_ZN7HD4478011Send_StringEPKc>
 		FirstDisplay.Set_X_Y(5, 2);
  7ae:	42 e0       	ldi	r20, 0x02	; 2
  7b0:	65 e0       	ldi	r22, 0x05	; 5
  7b2:	88 e2       	ldi	r24, 0x28	; 40
  7b4:	90 e2       	ldi	r25, 0x20	; 32
  7b6:	0e 94 99 03 	call	0x732	; 0x732 <_ZN7HD447807Set_X_YEhh>
-		FirstDisplay.Send_String(FE19_08B);
- 7ba:	60 e1       	ldi	r22, 0x10	; 16
+		FirstDisplay.Send_String("ФЭ19-08Б");
+ 7ba:	6f e0       	ldi	r22, 0x0F	; 15
  7bc:	70 e2       	ldi	r23, 0x20	; 32
  7be:	88 e2       	ldi	r24, 0x28	; 40
  7c0:	90 e2       	ldi	r25, 0x20	; 32
- 7c2:	0e 94 28 02 	call	0x450	; 0x450 <_ZN7HD4478011Send_StringEPh>
+ 7c2:	0e 94 28 02 	call	0x450	; 0x450 <_ZN7HD4478011Send_StringEPKc>
  7c6:	2f e7       	ldi	r18, 0x7F	; 127
  7c8:	84 e8       	ldi	r24, 0x84	; 132
  7ca:	9e e1       	ldi	r25, 0x1E	; 30
@@ -1134,12 +1134,12 @@ int main(void)
  7e4:	88 e2       	ldi	r24, 0x28	; 40
  7e6:	90 e2       	ldi	r25, 0x20	; 32
  7e8:	0e 94 99 03 	call	0x732	; 0x732 <_ZN7HD447807Set_X_YEhh>
-		FirstDisplay.Send_String(Clear);
- 7ec:	60 e0       	ldi	r22, 0x00	; 0
+		FirstDisplay.Send_String("Очистка дисплея");
+ 7ec:	68 e1       	ldi	r22, 0x18	; 24
  7ee:	70 e2       	ldi	r23, 0x20	; 32
  7f0:	88 e2       	ldi	r24, 0x28	; 40
  7f2:	90 e2       	ldi	r25, 0x20	; 32
- 7f4:	0e 94 28 02 	call	0x450	; 0x450 <_ZN7HD4478011Send_StringEPh>
+ 7f4:	0e 94 28 02 	call	0x450	; 0x450 <_ZN7HD4478011Send_StringEPKc>
  7f8:	2f ef       	ldi	r18, 0xFF	; 255
  7fa:	84 e3       	ldi	r24, 0x34	; 52
  7fc:	9c e0       	ldi	r25, 0x0C	; 12
@@ -1165,7 +1165,7 @@ int main(void)
  822:	00 00       	nop
  824:	b8 cf       	rjmp	.-144    	; 0x796 <main>
 
-00000826 <_GLOBAL__sub_I_PavelBezdelev>:
+00000826 <_GLOBAL__sub_I_FirstDisplay>:
 		_delay_ms(2000);
 	}
  826:	6f ef       	ldi	r22, 0xFF	; 255
