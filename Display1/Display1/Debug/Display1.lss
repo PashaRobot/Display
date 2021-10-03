@@ -3,31 +3,31 @@ Display1.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000008a2  00000000  00000000  00000094  2**1
+  0 .text         00000844  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000062  00802000  000008a2  00000936  2**0
+  1 .data         00000028  00802000  00000844  000008d8  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000001  00802062  00802062  00000998  2**0
+  2 .bss          00000001  00802028  00802028  00000900  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000998  2**0
+  3 .comment      00000030  00000000  00000000  00000900  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000009c8  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000930  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000080  00000000  00000000  00000a08  2**0
+  5 .debug_aranges 00000080  00000000  00000000  00000970  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00004097  00000000  00000000  00000a88  2**0
+  6 .debug_info   00003ef2  00000000  00000000  000009f0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000029d8  00000000  00000000  00004b1f  2**0
+  7 .debug_abbrev 000029e2  00000000  00000000  000048e2  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000ab8  00000000  00000000  000074f7  2**0
+  8 .debug_line   00000a5f  00000000  00000000  000072c4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000108  00000000  00000000  00007fb0  2**2
+  9 .debug_frame  00000108  00000000  00000000  00007d24  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00001e22  00000000  00000000  000080b8  2**0
+ 10 .debug_str    00001e25  00000000  00000000  00007e2c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000a24  00000000  00000000  00009eda  2**0
+ 11 .debug_loc    00000994  00000000  00000000  00009c51  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000078  00000000  00000000  0000a8fe  2**0
+ 12 .debug_ranges 00000078  00000000  00000000  0000a5e5  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -250,7 +250,7 @@ Disassembly of section .text:
  2aa:	89 03       	fmulsu	r16, r17
 
 000002ac <__ctors_start>:
- 2ac:	42 04       	cpc	r4, r2
+ 2ac:	13 04       	cpc	r1, r3
 
 000002ae <__ctors_end>:
  2ae:	11 24       	eor	r1, r1
@@ -264,18 +264,18 @@ Disassembly of section .text:
  2ba:	10 e2       	ldi	r17, 0x20	; 32
  2bc:	a0 e0       	ldi	r26, 0x00	; 0
  2be:	b0 e2       	ldi	r27, 0x20	; 32
- 2c0:	e2 ea       	ldi	r30, 0xA2	; 162
+ 2c0:	e4 e4       	ldi	r30, 0x44	; 68
  2c2:	f8 e0       	ldi	r31, 0x08	; 8
  2c4:	02 c0       	rjmp	.+4      	; 0x2ca <__do_copy_data+0x10>
  2c6:	05 90       	lpm	r0, Z+
  2c8:	0d 92       	st	X+, r0
- 2ca:	a2 36       	cpi	r26, 0x62	; 98
+ 2ca:	a8 32       	cpi	r26, 0x28	; 40
  2cc:	b1 07       	cpc	r27, r17
  2ce:	d9 f7       	brne	.-10     	; 0x2c6 <__do_copy_data+0xc>
 
 000002d0 <__do_clear_bss>:
  2d0:	20 e2       	ldi	r18, 0x20	; 32
- 2d2:	a2 e6       	ldi	r26, 0x62	; 98
+ 2d2:	a8 e2       	ldi	r26, 0x28	; 40
  2d4:	b0 e2       	ldi	r27, 0x20	; 32
  2d6:	01 c0       	rjmp	.+2      	; 0x2da <.do_clear_bss_start>
 
@@ -283,7 +283,7 @@ Disassembly of section .text:
  2d8:	1d 92       	st	X+, r1
 
 000002da <.do_clear_bss_start>:
- 2da:	a3 36       	cpi	r26, 0x63	; 99
+ 2da:	a9 32       	cpi	r26, 0x29	; 41
  2dc:	b2 07       	cpc	r27, r18
  2de:	e1 f7       	brne	.-8      	; 0x2d8 <.do_clear_bss_loop>
 
@@ -294,12 +294,12 @@ Disassembly of section .text:
  2e6:	04 c0       	rjmp	.+8      	; 0x2f0 <__do_global_ctors+0x10>
  2e8:	21 97       	sbiw	r28, 0x01	; 1
  2ea:	fe 01       	movw	r30, r28
- 2ec:	0e 94 49 04 	call	0x892	; 0x892 <__tablejump2__>
+ 2ec:	0e 94 1a 04 	call	0x834	; 0x834 <__tablejump2__>
  2f0:	c6 35       	cpi	r28, 0x56	; 86
  2f2:	d1 07       	cpc	r29, r17
  2f4:	c9 f7       	brne	.-14     	; 0x2e8 <__do_global_ctors+0x8>
  2f6:	0e 94 cb 03 	call	0x796	; 0x796 <main>
- 2fa:	0c 94 4f 04 	jmp	0x89e	; 0x89e <_exit>
+ 2fa:	0c 94 20 04 	jmp	0x840	; 0x840 <_exit>
 
 000002fe <__bad_interrupt>:
  2fe:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -638,7 +638,7 @@ void HD44780::Send_String(uint8_t* str)
  47e:	4e c1       	rjmp	.+668    	; 0x71c <_ZN7HD4478011Send_StringEPh+0x2cc>
  480:	e2 50       	subi	r30, 0x02	; 2
  482:	ff 4f       	sbci	r31, 0xFF	; 255
- 484:	0c 94 49 04 	jmp	0x892	; 0x892 <__tablejump2__>
+ 484:	0c 94 1a 04 	jmp	0x834	; 0x834 <__tablejump2__>
 		{
 			case 'À': Send_Data('A'); break;
  488:	61 e4       	ldi	r22, 0x41	; 65
@@ -1063,23 +1063,23 @@ void HD44780::Clear_Display()
  780:	08 95       	ret
 
 00000782 <_Z41__static_initialization_and_destruction_0ii>:
-		FirstDisplay.Clear_Display();
-		FirstDisplay.Send_String(uya);
+		FirstDisplay.Send_String(Clear);
 		_delay_ms(2000);
 		FirstDisplay.Clear_Display();
-    }
+		_delay_ms(2000);
+	}
  782:	01 97       	sbiw	r24, 0x01	; 1
  784:	39 f4       	brne	.+14     	; 0x794 <_Z41__static_initialization_and_destruction_0ii+0x12>
  786:	6f 3f       	cpi	r22, 0xFF	; 255
  788:	7f 4f       	sbci	r23, 0xFF	; 255
  78a:	21 f4       	brne	.+8      	; 0x794 <_Z41__static_initialization_and_destruction_0ii+0x12>
-uint8_t OPR[] = "îïðñòóôõö÷øùúûüýþÿ";
-uint8_t uya[] = "þÿ";
-uint8_t proverka[] = "ÏÐÎÂÅÐÊÀ";
-uint8_t yazyka[] = "ÐÓÑÑÊÎÃÎ ßÇÛÊÀ";
+
+uint8_t PavelBezdelev[] = "Ïàâåë Áåçäåëåâ";
+uint8_t FE19_08B[] = "ÔÝ19-08Á";
+uint8_t Clear[] = "Î÷èñòêà äèñïëåÿ";
 
 HD44780 FirstDisplay;
- 78c:	82 e6       	ldi	r24, 0x62	; 98
+ 78c:	88 e2       	ldi	r24, 0x28	; 40
  78e:	90 e2       	ldi	r25, 0x20	; 32
  790:	0e 94 ae 01 	call	0x35c	; 0x35c <_ZN7HD44780C1Ev>
  794:	08 95       	ret
@@ -1088,151 +1088,103 @@ HD44780 FirstDisplay;
 
 int main(void)
 {
-    while (1) 
-    {
-		FirstDisplay.Set_X_Y(5, 1);
+	while (1)
+	{
+		FirstDisplay.Set_X_Y(2, 1);
  796:	41 e0       	ldi	r20, 0x01	; 1
- 798:	65 e0       	ldi	r22, 0x05	; 5
- 79a:	82 e6       	ldi	r24, 0x62	; 98
+ 798:	62 e0       	ldi	r22, 0x02	; 2
+ 79a:	88 e2       	ldi	r24, 0x28	; 40
  79c:	90 e2       	ldi	r25, 0x20	; 32
  79e:	0e 94 99 03 	call	0x732	; 0x732 <_ZN7HD447807Set_X_YEhh>
-		FirstDisplay.Send_String(proverka);
- 7a2:	6f e0       	ldi	r22, 0x0F	; 15
+		FirstDisplay.Send_String(PavelBezdelev);
+ 7a2:	69 e1       	ldi	r22, 0x19	; 25
  7a4:	70 e2       	ldi	r23, 0x20	; 32
- 7a6:	82 e6       	ldi	r24, 0x62	; 98
+ 7a6:	88 e2       	ldi	r24, 0x28	; 40
  7a8:	90 e2       	ldi	r25, 0x20	; 32
  7aa:	0e 94 28 02 	call	0x450	; 0x450 <_ZN7HD4478011Send_StringEPh>
-		FirstDisplay.Set_X_Y(2, 2);
+		FirstDisplay.Set_X_Y(5, 2);
  7ae:	42 e0       	ldi	r20, 0x02	; 2
- 7b0:	62 e0       	ldi	r22, 0x02	; 2
- 7b2:	82 e6       	ldi	r24, 0x62	; 98
+ 7b0:	65 e0       	ldi	r22, 0x05	; 5
+ 7b2:	88 e2       	ldi	r24, 0x28	; 40
  7b4:	90 e2       	ldi	r25, 0x20	; 32
  7b6:	0e 94 99 03 	call	0x732	; 0x732 <_ZN7HD447807Set_X_YEhh>
-		FirstDisplay.Send_String(yazyka);
- 7ba:	60 e0       	ldi	r22, 0x00	; 0
+		FirstDisplay.Send_String(FE19_08B);
+ 7ba:	60 e1       	ldi	r22, 0x10	; 16
  7bc:	70 e2       	ldi	r23, 0x20	; 32
- 7be:	82 e6       	ldi	r24, 0x62	; 98
+ 7be:	88 e2       	ldi	r24, 0x28	; 40
  7c0:	90 e2       	ldi	r25, 0x20	; 32
  7c2:	0e 94 28 02 	call	0x450	; 0x450 <_ZN7HD4478011Send_StringEPh>
  7c6:	2f e7       	ldi	r18, 0x7F	; 127
- 7c8:	8f e4       	ldi	r24, 0x4F	; 79
- 7ca:	92 e1       	ldi	r25, 0x12	; 18
+ 7c8:	84 e8       	ldi	r24, 0x84	; 132
+ 7ca:	9e e1       	ldi	r25, 0x1E	; 30
  7cc:	21 50       	subi	r18, 0x01	; 1
  7ce:	80 40       	sbci	r24, 0x00	; 0
  7d0:	90 40       	sbci	r25, 0x00	; 0
  7d2:	e1 f7       	brne	.-8      	; 0x7cc <main+0x36>
  7d4:	00 c0       	rjmp	.+0      	; 0x7d6 <main+0x40>
  7d6:	00 00       	nop
-		_delay_ms(3000);
+		_delay_ms(5000);
 		FirstDisplay.Clear_Display();
- 7d8:	82 e6       	ldi	r24, 0x62	; 98
+ 7d8:	88 e2       	ldi	r24, 0x28	; 40
  7da:	90 e2       	ldi	r25, 0x20	; 32
  7dc:	0e 94 b7 03 	call	0x76e	; 0x76e <_ZN7HD4478013Clear_DisplayEv>
-		FirstDisplay.Send_String(ABV);
- 7e0:	60 e5       	ldi	r22, 0x50	; 80
- 7e2:	70 e2       	ldi	r23, 0x20	; 32
- 7e4:	82 e6       	ldi	r24, 0x62	; 98
+		FirstDisplay.Set_X_Y(1, 1);
+ 7e0:	41 e0       	ldi	r20, 0x01	; 1
+ 7e2:	61 e0       	ldi	r22, 0x01	; 1
+ 7e4:	88 e2       	ldi	r24, 0x28	; 40
  7e6:	90 e2       	ldi	r25, 0x20	; 32
- 7e8:	0e 94 28 02 	call	0x450	; 0x450 <_ZN7HD4478011Send_StringEPh>
-		FirstDisplay.Set_X_Y(1, 2);
- 7ec:	42 e0       	ldi	r20, 0x02	; 2
- 7ee:	61 e0       	ldi	r22, 0x01	; 1
- 7f0:	82 e6       	ldi	r24, 0x62	; 98
+ 7e8:	0e 94 99 03 	call	0x732	; 0x732 <_ZN7HD447807Set_X_YEhh>
+		FirstDisplay.Send_String(Clear);
+ 7ec:	60 e0       	ldi	r22, 0x00	; 0
+ 7ee:	70 e2       	ldi	r23, 0x20	; 32
+ 7f0:	88 e2       	ldi	r24, 0x28	; 40
  7f2:	90 e2       	ldi	r25, 0x20	; 32
- 7f4:	0e 94 99 03 	call	0x732	; 0x732 <_ZN7HD447807Set_X_YEhh>
-		FirstDisplay.Send_String(PRS);
- 7f8:	6f e3       	ldi	r22, 0x3F	; 63
- 7fa:	70 e2       	ldi	r23, 0x20	; 32
- 7fc:	82 e6       	ldi	r24, 0x62	; 98
- 7fe:	90 e2       	ldi	r25, 0x20	; 32
- 800:	0e 94 28 02 	call	0x450	; 0x450 <_ZN7HD4478011Send_StringEPh>
- 804:	2f e7       	ldi	r18, 0x7F	; 127
- 806:	84 e8       	ldi	r24, 0x84	; 132
- 808:	9e e1       	ldi	r25, 0x1E	; 30
- 80a:	21 50       	subi	r18, 0x01	; 1
- 80c:	80 40       	sbci	r24, 0x00	; 0
- 80e:	90 40       	sbci	r25, 0x00	; 0
- 810:	e1 f7       	brne	.-8      	; 0x80a <__DATA_REGION_LENGTH__+0xa>
- 812:	00 c0       	rjmp	.+0      	; 0x814 <__DATA_REGION_LENGTH__+0x14>
- 814:	00 00       	nop
-		_delay_ms(5000);
-		FirstDisplay.Clear_Display();
- 816:	82 e6       	ldi	r24, 0x62	; 98
- 818:	90 e2       	ldi	r25, 0x20	; 32
- 81a:	0e 94 b7 03 	call	0x76e	; 0x76e <_ZN7HD4478013Clear_DisplayEv>
-		FirstDisplay.Send_String(YAabv);
- 81e:	6e e2       	ldi	r22, 0x2E	; 46
- 820:	70 e2       	ldi	r23, 0x20	; 32
- 822:	82 e6       	ldi	r24, 0x62	; 98
- 824:	90 e2       	ldi	r25, 0x20	; 32
- 826:	0e 94 28 02 	call	0x450	; 0x450 <_ZN7HD4478011Send_StringEPh>
-		FirstDisplay.Set_X_Y(1, 2);
- 82a:	42 e0       	ldi	r20, 0x02	; 2
- 82c:	61 e0       	ldi	r22, 0x01	; 1
- 82e:	82 e6       	ldi	r24, 0x62	; 98
- 830:	90 e2       	ldi	r25, 0x20	; 32
- 832:	0e 94 99 03 	call	0x732	; 0x732 <_ZN7HD447807Set_X_YEhh>
-		FirstDisplay.Send_String(OPR);
- 836:	6b e1       	ldi	r22, 0x1B	; 27
- 838:	70 e2       	ldi	r23, 0x20	; 32
- 83a:	82 e6       	ldi	r24, 0x62	; 98
- 83c:	90 e2       	ldi	r25, 0x20	; 32
- 83e:	0e 94 28 02 	call	0x450	; 0x450 <_ZN7HD4478011Send_StringEPh>
- 842:	2f e7       	ldi	r18, 0x7F	; 127
- 844:	84 e8       	ldi	r24, 0x84	; 132
- 846:	9e e1       	ldi	r25, 0x1E	; 30
- 848:	21 50       	subi	r18, 0x01	; 1
- 84a:	80 40       	sbci	r24, 0x00	; 0
- 84c:	90 40       	sbci	r25, 0x00	; 0
- 84e:	e1 f7       	brne	.-8      	; 0x848 <__DATA_REGION_LENGTH__+0x48>
- 850:	00 c0       	rjmp	.+0      	; 0x852 <__DATA_REGION_LENGTH__+0x52>
- 852:	00 00       	nop
-		_delay_ms(5000);
-		FirstDisplay.Clear_Display();
- 854:	82 e6       	ldi	r24, 0x62	; 98
- 856:	90 e2       	ldi	r25, 0x20	; 32
- 858:	0e 94 b7 03 	call	0x76e	; 0x76e <_ZN7HD4478013Clear_DisplayEv>
-		FirstDisplay.Send_String(uya);
- 85c:	68 e1       	ldi	r22, 0x18	; 24
- 85e:	70 e2       	ldi	r23, 0x20	; 32
- 860:	82 e6       	ldi	r24, 0x62	; 98
- 862:	90 e2       	ldi	r25, 0x20	; 32
- 864:	0e 94 28 02 	call	0x450	; 0x450 <_ZN7HD4478011Send_StringEPh>
- 868:	2f ef       	ldi	r18, 0xFF	; 255
- 86a:	84 e3       	ldi	r24, 0x34	; 52
- 86c:	9c e0       	ldi	r25, 0x0C	; 12
- 86e:	21 50       	subi	r18, 0x01	; 1
- 870:	80 40       	sbci	r24, 0x00	; 0
- 872:	90 40       	sbci	r25, 0x00	; 0
- 874:	e1 f7       	brne	.-8      	; 0x86e <__DATA_REGION_LENGTH__+0x6e>
- 876:	00 c0       	rjmp	.+0      	; 0x878 <__DATA_REGION_LENGTH__+0x78>
- 878:	00 00       	nop
+ 7f4:	0e 94 28 02 	call	0x450	; 0x450 <_ZN7HD4478011Send_StringEPh>
+ 7f8:	2f ef       	ldi	r18, 0xFF	; 255
+ 7fa:	84 e3       	ldi	r24, 0x34	; 52
+ 7fc:	9c e0       	ldi	r25, 0x0C	; 12
+ 7fe:	21 50       	subi	r18, 0x01	; 1
+ 800:	80 40       	sbci	r24, 0x00	; 0
+ 802:	90 40       	sbci	r25, 0x00	; 0
+ 804:	e1 f7       	brne	.-8      	; 0x7fe <main+0x68>
+ 806:	00 c0       	rjmp	.+0      	; 0x808 <__DATA_REGION_LENGTH__+0x8>
+ 808:	00 00       	nop
 		_delay_ms(2000);
 		FirstDisplay.Clear_Display();
- 87a:	82 e6       	ldi	r24, 0x62	; 98
- 87c:	90 e2       	ldi	r25, 0x20	; 32
- 87e:	0e 94 b7 03 	call	0x76e	; 0x76e <_ZN7HD4478013Clear_DisplayEv>
- 882:	89 cf       	rjmp	.-238    	; 0x796 <main>
+ 80a:	88 e2       	ldi	r24, 0x28	; 40
+ 80c:	90 e2       	ldi	r25, 0x20	; 32
+ 80e:	0e 94 b7 03 	call	0x76e	; 0x76e <_ZN7HD4478013Clear_DisplayEv>
+ 812:	2f ef       	ldi	r18, 0xFF	; 255
+ 814:	84 e3       	ldi	r24, 0x34	; 52
+ 816:	9c e0       	ldi	r25, 0x0C	; 12
+ 818:	21 50       	subi	r18, 0x01	; 1
+ 81a:	80 40       	sbci	r24, 0x00	; 0
+ 81c:	90 40       	sbci	r25, 0x00	; 0
+ 81e:	e1 f7       	brne	.-8      	; 0x818 <__DATA_REGION_LENGTH__+0x18>
+ 820:	00 c0       	rjmp	.+0      	; 0x822 <__DATA_REGION_LENGTH__+0x22>
+ 822:	00 00       	nop
+ 824:	b8 cf       	rjmp	.-144    	; 0x796 <main>
 
-00000884 <_GLOBAL__sub_I_ABV>:
-    }
- 884:	6f ef       	ldi	r22, 0xFF	; 255
- 886:	7f ef       	ldi	r23, 0xFF	; 255
- 888:	81 e0       	ldi	r24, 0x01	; 1
- 88a:	90 e0       	ldi	r25, 0x00	; 0
- 88c:	0e 94 c1 03 	call	0x782	; 0x782 <_Z41__static_initialization_and_destruction_0ii>
- 890:	08 95       	ret
+00000826 <_GLOBAL__sub_I_PavelBezdelev>:
+		_delay_ms(2000);
+	}
+ 826:	6f ef       	ldi	r22, 0xFF	; 255
+ 828:	7f ef       	ldi	r23, 0xFF	; 255
+ 82a:	81 e0       	ldi	r24, 0x01	; 1
+ 82c:	90 e0       	ldi	r25, 0x00	; 0
+ 82e:	0e 94 c1 03 	call	0x782	; 0x782 <_Z41__static_initialization_and_destruction_0ii>
+ 832:	08 95       	ret
 
-00000892 <__tablejump2__>:
- 892:	ee 0f       	add	r30, r30
- 894:	ff 1f       	adc	r31, r31
- 896:	05 90       	lpm	r0, Z+
- 898:	f4 91       	lpm	r31, Z
- 89a:	e0 2d       	mov	r30, r0
- 89c:	09 94       	ijmp
+00000834 <__tablejump2__>:
+ 834:	ee 0f       	add	r30, r30
+ 836:	ff 1f       	adc	r31, r31
+ 838:	05 90       	lpm	r0, Z+
+ 83a:	f4 91       	lpm	r31, Z
+ 83c:	e0 2d       	mov	r30, r0
+ 83e:	09 94       	ijmp
 
-0000089e <_exit>:
- 89e:	f8 94       	cli
+00000840 <_exit>:
+ 840:	f8 94       	cli
 
-000008a0 <__stop_program>:
- 8a0:	ff cf       	rjmp	.-2      	; 0x8a0 <__stop_program>
+00000842 <__stop_program>:
+ 842:	ff cf       	rjmp	.-2      	; 0x842 <__stop_program>
