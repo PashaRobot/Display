@@ -94,7 +94,77 @@ void HD44780::Send_String(uint8_t* str)
 	uint8_t i = 0;
 	while (*(str+i))    // Цикл действует пока не дойдет до 0, который стоит в конце строки
 	{
-		Send_Data(*(str+i));
+		switch(*(str+i))
+		{
+			case 'А': Send_Data('A'); break;
+			case 'Б': Send_Data(0xA0); break;
+			case 'В': Send_Data('B'); break;
+			case 'Г': Send_Data(0xA1); break;
+			case 'Д': Send_Data(0xE0); break;
+			case 'Е': Send_Data('E'); break;
+			case 'Ё': Send_Data(0xA2); break;
+			case 'Ж': Send_Data(0xA3); break;
+			case 'З': Send_Data(0xA4); break;
+			case 'И': Send_Data(0xA5); break;	
+			case 'Й': Send_Data(0xA6); break;
+			case 'К': Send_Data('K'); break;
+			case 'Л': Send_Data(0xA7); break;
+			case 'М': Send_Data('M'); break;
+			case 'Н': Send_Data('H'); break;
+			case 'О': Send_Data('O'); break;
+			case 'П': Send_Data(0xA8); break;
+			case 'Р': Send_Data('P'); break;
+			case 'С': Send_Data('C'); break;
+			case 'Т': Send_Data('T'); break;
+			case 'У': Send_Data(0xA9); break;
+			case 'Ф': Send_Data(0xAA); break;
+			case 'Х': Send_Data('X'); break;
+			case 'Ц': Send_Data(0xE1); break;
+			case 'Ч': Send_Data(0xAB); break;
+			case 'Ш': Send_Data(0xAC); break;
+			case 'Щ': Send_Data(0xE2); break;
+			case 'Ъ': Send_Data(0xAD); break;
+			case 'Ы': Send_Data(0xAE); break;
+			case 'Ь': Send_Data(0x62); break;
+			case 'Э': Send_Data(0xAF); break;
+			case 'Ю': Send_Data(0xB0); break;
+			case 'Я': Send_Data(0xB1); break;
+			case 'а': Send_Data('a'); break;
+			case 'б': Send_Data(0xB2); break;
+			case 'в': Send_Data(0xB3); break;
+			case 'г': Send_Data(0xB4); break;
+			case 'д': Send_Data(0xE3); break;
+			case 'е': Send_Data('e'); break;
+			case 'ё': Send_Data(0xB5); break;
+			case 'ж': Send_Data(0xB6); break;
+			case 'з': Send_Data(0xB7); break;
+			case 'и': Send_Data(0xB8); break;
+			case 'й': Send_Data(0xB9); break;
+			case 'к': Send_Data(0xBA); break;
+			case 'л': Send_Data(0xBB); break;
+			case 'м': Send_Data(0xBC); break;
+			case 'н': Send_Data(0xBD); break;
+			case 'о': Send_Data('o'); break;
+			case 'п': Send_Data(0xBE); break;
+			case 'р': Send_Data('p'); break;
+			case 'с': Send_Data('c'); break;
+			case 'т': Send_Data(0xBF); break;
+			case 'у': Send_Data('y'); break;
+			case 'ф': Send_Data(0xE4); break;
+			case 'х': Send_Data('x'); break;
+			case 'ц': Send_Data(0xE5); break;
+			case 'ч': Send_Data(0xC0); break;
+			case 'ш': Send_Data(0xC1); break;
+			case 'щ': Send_Data(0xE6); break;
+			case 'ъ': Send_Data(0xC2); break;
+			case 'ы': Send_Data(0xC3); break;
+			case 'ь': Send_Data(0xC4); break;
+			case 'э': Send_Data(0xC5); break;
+			case 'ю': Send_Data(0xC6); break;
+			case 'я': Send_Data(0xC7); break;
+				
+			default: Send_Data(*(str+i));
+		}
 		i++;
 	}
 }
