@@ -66,9 +66,15 @@ public:
 	void	Send_Cmd(uint8_t);
 	void	String(uint8_t*);
 	void    _PORTA_OUT_(uint8_t);
-	void    Send_String(uint8_t*);
+	void    Send_String(const char* str);
 	void    Set_X_Y(uint8_t x, uint8_t y);
 	void    Clear_Display();
+	void    Send_Num(uint8_t Num);
+	void    Send_Num(uint16_t Num);
+	void    Send_Num(uint32_t Num);
+	void    Send_Num(int8_t Num);
+	void    Send_Num(int16_t Num);
+	void    Send_Num(int32_t Num);
 	
 	//~HD44780();
 protected:

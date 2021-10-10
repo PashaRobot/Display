@@ -89,7 +89,7 @@ void HD44780::_PORTA_OUT_(uint8_t byte)
 	}
 }
 
-void HD44780::Send_String(uint8_t* str)
+void HD44780::Send_String(const char* str)
 {
 	uint8_t i = 0;
 	while (*(str+i))    // Цикл действует пока не дойдет до 0, который стоит в конце строки
@@ -177,7 +177,7 @@ void HD44780::Set_X_Y(uint8_t x, uint8_t y)
 	}
 	else if((y == 2) && (x >= 1 && x <= 16))
 	{
-		Send_Cmd(1 << 7 | (x + 63));
+		Send_Cmd(1 << 7 | (x - 1 + 0x40));
 	}
 	else
 	Send_Cmd(1 << 7 | 0x0);
@@ -188,4 +188,217 @@ void HD44780::Clear_Display()
 {
 	Send_Cmd(1);
 	_delay_ms(2);
+}
+
+void HD44780::Send_Num(uint8_t Num)
+{
+	uint8_t count = 0;
+	uint8_t ch[3];
+	
+	for(int i = 0; (Num) || ((!Num) & (!count)); i++)
+	{
+		ch[i] = Num % 10;
+		Num = Num / 10;
+		count++;
+	}
+	
+	for(int i = count - 1; i >= 0; i--)
+	{
+		Send_Data(ch[i] + 0x30);
+	}
+}
+
+void HD44780::Send_Num(uint16_t Num)
+{
+	uint8_t count = 0;
+	uint8_t ch[5];
+	
+	for(int i = 0; (Num) || ((!Num) & (!count)); i++)
+	{
+		ch[i] = Num % 10;
+		Num = Num / 10;
+		count++;
+	}
+	
+	for(int i = count - 1; i >= 0; i--)
+	{
+		Send_Data(ch[i] + 0x30);
+	}
+}
+
+void HD44780::Send_Num(uint32_t Num)
+{
+	uint8_t count = 0;
+	uint8_t ch[10];
+	
+	for(int i = 0; (Num) || ((!Num) & (!count)); i++)
+	{
+		ch[i] = Num % 10;
+		Num = Num / 10;
+		count++;
+	}
+	
+	for(int i = count - 1; i >= 0; i--)
+	{
+		Send_Data(ch[i] + 0x30);
+	}
+}
+
+void HD44780::Send_Num(int8_t Num)
+{
+	uint8_t count = 0;
+	uint8_t ch[3];
+	uint8_t Num_128 = 128;
+	
+	if(Num < 0 && Num != -128)
+	{
+		Num *= -1;
+		Send_Data('-');
+		for(int i = 0; Num; i++)
+		{
+			ch[i] = Num % 10;
+			Num = Num / 10;
+			count++;
+		}
+		
+		for(int i = count - 1; i >= 0; i--)
+		{
+			Send_Data(ch[i] + 0x30);
+		}
+	}
+	else if(Num == -128)
+	{
+		Send_Data('-');
+		for(int i = 0; Num_128; i++)
+		{
+			ch[i] = Num_128 % 10;
+			Num_128 = Num_128 / 10;
+			count++;
+		}
+		
+		for(int i = count - 1; i >= 0; i--)
+		{
+			Send_Data(ch[i] + 0x30);
+		}
+	}
+	else
+	{
+		for(int i = 0; (Num) || ((!Num) & (!count)); i++)
+		{
+			ch[i] = Num % 10;
+			Num = Num / 10;
+			count++;
+		}
+		
+		for(int i = count - 1; i >= 0; i--)
+		{
+			Send_Data(ch[i] + 0x30);
+		}
+	}
+}
+
+void HD44780::Send_Num(int16_t Num)
+{
+	uint8_t count = 0;
+	uint8_t ch[5];
+	uint16_t Num_32768 = -32768;
+	
+	if(Num < 0 && Num != -32768)
+	{
+		Num *= -1;
+		Send_Data('-');
+		for(int i = 0; Num; i++)
+		{
+			ch[i] = Num % 10;
+			Num = Num / 10;
+			count++;
+		}
+		
+		for(int i = count - 1; i >= 0; i--)
+		{
+			Send_Data(ch[i] + 0x30);
+		}
+	}
+	else if(Num == -32768)
+	{
+		Send_Data('-');
+		for(int i = 0; Num_32768; i++)
+		{
+			ch[i] = Num_32768 % 10;
+			Num_32768 = Num_32768 / 10;
+			count++;
+		}
+		
+		for(int i = count - 1; i >= 0; i--)
+		{
+			Send_Data(ch[i] + 0x30);
+		}
+	}
+	else
+	{
+		for(int i = 0; (Num) || ((!Num) & (!count)); i++)
+		{
+			ch[i] = Num % 10;
+			Num = Num / 10;
+			count++;
+		}
+		
+		for(int i = count - 1; i >= 0; i--)
+		{
+			Send_Data(ch[i] + 0x30);
+		}
+	}
+}
+
+void HD44780::Send_Num(int32_t Num)
+{
+	uint8_t count = 0;
+	uint8_t ch[10];
+	uint32_t Num2billion = 2147483648;
+	
+	if(Num < 0 && Num != -2147483648)
+	{
+		Num *= -1;
+		Send_Data('-');
+		for(int i = 0; Num; i++)
+		{
+			ch[i] = Num % 10;
+			Num = Num / 10;
+			count++;
+		}
+		
+		for(int i = count - 1; i >= 0; i--)
+		{
+			Send_Data(ch[i] + 0x30);
+		}
+	}
+	else if(Num == -2147483648)
+	{
+		Send_Data('-');
+		for(int i = 0; Num2billion; i++)
+		{
+			ch[i] = Num2billion % 10;
+			Num2billion = Num2billion / 10;
+			count++;
+		}
+		
+		for(int i = count - 1; i >= 0; i--)
+		{
+			Send_Data(ch[i] + 0x30);
+		}
+	}
+	else
+	{
+		for(int i = 0; (Num) || ((!Num) & (!count)); i++)
+		{
+			ch[i] = Num % 10;
+			Num = Num / 10;
+			count++;
+		}
+		
+		for(int i = count - 1; i >= 0; i--)
+		{
+			Send_Data(ch[i] + 0x30);
+		}
+	}
 }
