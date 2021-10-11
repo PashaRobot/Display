@@ -402,3 +402,18 @@ void HD44780::Send_Num(int32_t Num)
 		}
 	}
 }
+
+void HD44780::Set_CGRAM(uint8_t addr)
+{
+	Send_Cmd(0x40 | (addr & 0x3F));
+}
+
+void HD44780::Set_Symbol(uint8_t* symbol)
+{
+	Set_CGRAM(0);
+	for (uint8_t i = 0; i < 8; i++)
+	{
+		Send_Data(*(symbol + i));
+	}
+	Send_Cmd(0x80);
+}

@@ -75,6 +75,8 @@ public:
 	void    Send_Num(int8_t Num);
 	void    Send_Num(int16_t Num);
 	void    Send_Num(int32_t Num);
+	void    Set_CGRAM(uint8_t addr);
+	void    Set_Symbol(uint8_t* symbol);
 	
 	//~HD44780();
 protected:
