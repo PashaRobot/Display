@@ -408,14 +408,15 @@ void HD44780::Set_CGRAM(uint8_t addr)
 	Send_Cmd(0x40 | (addr & 0x3F));
 }
 
-void HD44780::Set_Symbol(uint8_t* symbol)
+void HD44780::Set_Symbol(uint8_t* symbol, uint8_t StringsNumber, uint8_t addrDDRAM, uint8_t addrCGRAM)
 {
-	Set_CGRAM(0);
-	for (uint8_t i = 0; i < 8; i++)
+	Set_CGRAM(addrCGRAM);
+	for (uint8_t i = 0; i < StringsNumber; i++)
 	{
 		Send_Data(*(symbol + i));
 	}
-	Send_Cmd(0x80);
+	Send_Cmd(0x80 | addrDDRAM);
+	Send_Data(addrCGRAM / 8);
 }
 
 void HD44780::Send_Hex(uint8_t* hex, uint8_t bytes)
