@@ -22,15 +22,24 @@ uint8_t ArraySymbol[] =
 	0b00000,
 };
 
+uint8_t ArraySymbol2[] =
+{
+	0b00000,
+	0b01010,
+	0b01010,
+	0b00000,
+	0b10001,
+	0b01110,
+	0b01110,
+	0b00000,
+};
+
 int main(void)
 {
-	uint32_t hex_num = 0;
+	FirstDisplay.Set_Symbol(ArraySymbol, 8, 0, 0); // Аргументы функции: указатель на массив строк символа, количество строк, адрес DDRAM, адрес CGRAM
+	FirstDisplay.Set_Symbol(ArraySymbol2, 8, 40, 8);
+	
 	while (1)
 	{
-		FirstDisplay.Send_Hex(reinterpret_cast<uint8_t*>(&hex_num), 4);
-		hex_num++;
-		_delay_ms(500);
-		FirstDisplay.Clear_Display();
 	}
-
 }
