@@ -36,8 +36,6 @@ Discarded input sections
                 0x00000000       0xb0 HD44780.o
  .text._ZN7HD447807Set_X_YEhh
                 0x00000000       0x3c HD44780.o
- .text._ZN7HD4478013Clear_DisplayEv
-                0x00000000       0x14 HD44780.o
  .text._ZN7HD447808Send_NumEh
                 0x00000000       0xa6 HD44780.o
  .text._ZN7HD447808Send_NumEj
@@ -50,9 +48,15 @@ Discarded input sections
                 0x00000000      0x1be HD44780.o
  .text._ZN7HD447808Send_NumEl
                 0x00000000      0x1f0 HD44780.o
+ .text._ZN7HD447809Set_CGRAMEh
+                0x00000000        0xa HD44780.o
+ .text._ZN7HD4478010Set_SymbolEPh
+                0x00000000       0x40 HD44780.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
+ .data.ArraySymbol
+                0x00000000        0x8 main.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega2\libgcc.a(_divmodhi4.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega2\libgcc.a(_divmodhi4.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega2\libgcc.a(_divmodhi4.o)
@@ -357,7 +361,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x434
+.text           0x00000000      0x4e6
  *(.vectors)
  .vectors       0x00000000      0x1fc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.2.141/gcc/dev/atxmega16a4u/avrxmega2/crtatxmega16a4u.o
                 0x00000000                __vector_default
@@ -561,25 +565,25 @@ END GROUP
  .text._ZN7HD447809Send_DataEh
                 0x0000036a       0x36 HD44780.o
                 0x0000036a                _ZN7HD447809Send_DataEh
- .text._ZN7HD447809Set_CGRAMEh
-                0x000003a0        0xa HD44780.o
-                0x000003a0                _ZN7HD447809Set_CGRAMEh
- .text._ZN7HD4478010Set_SymbolEPh
-                0x000003aa       0x40 HD44780.o
-                0x000003aa                _ZN7HD4478010Set_SymbolEPh
+ .text._ZN7HD4478013Clear_DisplayEv
+                0x000003a0       0x14 HD44780.o
+                0x000003a0                _ZN7HD4478013Clear_DisplayEv
+ .text._ZN7HD447808Send_HexEPhh
+                0x000003b4       0xaa HD44780.o
+                0x000003b4                _ZN7HD447808Send_HexEPhh
  .text._Z41__static_initialization_and_destruction_0ii
-                0x000003ea       0x14 main.o
- .text.main     0x000003fe       0x18 main.o
-                0x000003fe                main
+                0x0000045e       0x14 main.o
+ .text.main     0x00000472       0x56 main.o
+                0x00000472                main
  .text._GLOBAL__sub_I_FirstDisplay
-                0x00000416        0xe main.o
- .text.libgcc   0x00000424        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega2\libgcc.a(_tablejump2.o)
-                0x00000424                __tablejump2__
-                0x00000430                . = ALIGN (0x2)
+                0x000004c8        0xe main.o
+ .text.libgcc   0x000004d6        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega2\libgcc.a(_tablejump2.o)
+                0x000004d6                __tablejump2__
+                0x000004e2                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000430        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega2\libgcc.a(_exit.o)
-                0x00000430                _exit
-                0x00000430                exit
+ .fini9         0x000004e2        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega2\libgcc.a(_exit.o)
+                0x000004e2                _exit
+                0x000004e2                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -598,42 +602,39 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000430        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega2\libgcc.a(_exit.o)
+ .fini0         0x000004e2        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega2\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000434                _etext = .
+                0x000004e6                _etext = .
 
-.data           0x00802000        0x8 load address 0x00000434
+.data           0x00802000        0x0 load address 0x000004e6
                 0x00802000                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
- .data.ArraySymbol
-                0x00802000        0x8 main.o
-                0x00802000                ArraySymbol
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.r*)
-                0x00802008                . = ALIGN (0x2)
-                0x00802008                _edata = .
-                0x00802008                PROVIDE (__data_end, .)
+                0x00802000                . = ALIGN (0x2)
+                0x00802000                _edata = .
+                0x00802000                PROVIDE (__data_end, .)
 
-.bss            0x00802008        0x1
-                0x00802008                PROVIDE (__bss_start, .)
+.bss            0x00802000        0x1
+                0x00802000                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.FirstDisplay
-                0x00802008        0x1 main.o
-                0x00802008                FirstDisplay
+                0x00802000        0x1 main.o
+                0x00802000                FirstDisplay
  *(COMMON)
-                0x00802009                PROVIDE (__bss_end, .)
-                0x00000434                __data_load_start = LOADADDR (.data)
-                0x0000043c                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00802001                PROVIDE (__bss_end, .)
+                0x000004e6                __data_load_start = LOADADDR (.data)
+                0x000004e6                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00802009        0x0
+.noinit         0x00802001        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00802009                _end = .
+                0x00802001                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -699,51 +700,51 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xc0
+.debug_aranges  0x00000000       0xc8
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x90 HD44780.o
+                0x00000000       0x98 HD44780.o
  .debug_aranges
-                0x00000090       0x30 main.o
+                0x00000098       0x30 main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x4758
+.debug_info     0x00000000     0x4926
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000     0x284f C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.2.141/gcc/dev/atxmega16a4u/avrxmega2/crtatxmega16a4u.o
- .debug_info    0x0000284f     0x1b11 HD44780.o
- .debug_info    0x00004360      0x3f8 main.o
+ .debug_info    0x0000284f     0x1c21 HD44780.o
+ .debug_info    0x00004470      0x4b6 main.o
 
-.debug_abbrev   0x00000000     0x2a1e
+.debug_abbrev   0x00000000     0x2a8d
  *(.debug_abbrev)
  .debug_abbrev  0x00000000     0x262c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.2.141/gcc/dev/atxmega16a4u/avrxmega2/crtatxmega16a4u.o
- .debug_abbrev  0x0000262c      0x2d0 HD44780.o
- .debug_abbrev  0x000028fc      0x122 main.o
+ .debug_abbrev  0x0000262c      0x2c1 HD44780.o
+ .debug_abbrev  0x000028ed      0x1a0 main.o
 
-.debug_line     0x00000000      0xfb2
+.debug_line     0x00000000     0x10bb
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x391 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.2.141/gcc/dev/atxmega16a4u/avrxmega2/crtatxmega16a4u.o
- .debug_line    0x00000391      0xb2d HD44780.o
- .debug_line    0x00000ebe       0xf4 main.o
+ .debug_line    0x00000391      0xba8 HD44780.o
+ .debug_line    0x00000f39      0x182 main.o
 
-.debug_frame    0x00000000      0x2b0
+.debug_frame    0x00000000      0x2f4
  *(.debug_frame)
- .debug_frame   0x00000000      0x26c HD44780.o
- .debug_frame   0x0000026c       0x44 main.o
+ .debug_frame   0x00000000      0x2a0 HD44780.o
+ .debug_frame   0x000002a0       0x54 main.o
 
-.debug_str      0x00000000     0x1f29
+.debug_str      0x00000000     0x1f59
  *(.debug_str)
  .debug_str     0x00000000     0x1aa8 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.2.141/gcc/dev/atxmega16a4u/avrxmega2/crtatxmega16a4u.o
- .debug_str     0x00001aa8      0x402 HD44780.o
-                                0x459 (size before relaxing)
- .debug_str     0x00001eaa       0x7f main.o
-                                0x439 (size before relaxing)
+ .debug_str     0x00001aa8      0x42a HD44780.o
+                                0x481 (size before relaxing)
+ .debug_str     0x00001ed2       0x87 main.o
+                                0x4a5 (size before relaxing)
 
-.debug_loc      0x00000000     0x16bb
+.debug_loc      0x00000000     0x1895
  *(.debug_loc)
- .debug_loc     0x00000000     0x166f HD44780.o
- .debug_loc     0x0000166f       0x4c main.o
+ .debug_loc     0x00000000     0x17b9 HD44780.o
+ .debug_loc     0x000017b9       0xdc main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -763,10 +764,10 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x190
+.debug_ranges   0x00000000      0x198
  *(.debug_ranges)
- .debug_ranges  0x00000000      0x170 HD44780.o
- .debug_ranges  0x00000170       0x20 main.o
+ .debug_ranges  0x00000000      0x178 HD44780.o
+ .debug_ranges  0x00000178       0x20 main.o
 
 .debug_macro
  *(.debug_macro)
