@@ -417,3 +417,20 @@ void HD44780::Set_Symbol(uint8_t* symbol)
 	}
 	Send_Cmd(0x80);
 }
+
+void HD44780::Send_Hex(uint8_t* hex, uint8_t bytes)
+{
+	uint8_t ch[16];
+	
+	for(int i = 0; i < bytes ; i++)
+	{
+		ch[i*2] = *(hex + i) % 16;
+		ch[i*2+1] =  *(hex + i) / 16;
+	}
+	
+	for(int i = bytes * 2 - 1; i >= 0; i--)
+	{
+		if(ch[i] < 10) Send_Data(ch[i] + 0x30);
+		else Send_Data(ch[i] + 0x37);
+	}
+}

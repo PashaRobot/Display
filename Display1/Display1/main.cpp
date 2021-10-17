@@ -24,10 +24,13 @@ uint8_t ArraySymbol[] =
 
 int main(void)
 {
-	FirstDisplay.Set_Symbol(ArraySymbol);
-	FirstDisplay.Send_Data(0);
-
+	uint32_t hex_num = 0;
 	while (1)
-	{	
+	{
+		FirstDisplay.Send_Hex(reinterpret_cast<uint8_t*>(&hex_num), 4);
+		hex_num++;
+		_delay_ms(500);
+		FirstDisplay.Clear_Display();
 	}
+
 }
