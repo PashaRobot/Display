@@ -60,7 +60,7 @@ private:
 
 //functions
 public:
-	HD44780();
+	HD44780(uint8_t state, uint8_t shift);
 	
 	void	Send_Data(uint8_t);
 	void	Send_Cmd(uint8_t);
